@@ -366,7 +366,8 @@ while true; do
 			echo "=========="
 			awk -F: '$3 >= 1000 {print $1}' /etc/passwd
 			read -p "choose user to get info about them: " user
-			sudo id $user;;
+			sudo id $user
+			sleep 5;;
                 *)
                         echo "Invalid choice"
                         sleep 0.3;;
@@ -384,7 +385,8 @@ while true; do
 		0)
 			user_menu;;
 		1)
-			awk -F: '$3 >= 1000 {print $1}' /etc/passwd;;
+			awk -F: '$3 >= 1000 {print $1}' /etc/passwd
+			sleep 3;;
                 *)
                         echo "Invalid choice"
                         sleep 0.3;;
