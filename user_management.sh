@@ -38,6 +38,7 @@ while true; do
 	echo "6.remove user from group"
 	echo "7.get info about user"
 	echo "8.show all normal users"
+	echo "9.rename user"
 	read -p "choose: " main_menu
 	case $main_menu in
 		0)
@@ -59,6 +60,8 @@ while true; do
 			get_info;;
 		8)
 			all_users;;	
+		9)
+			rename_user;;
 	        *)
                         echo "Invalid choice"
                         sleep 0.3;;
@@ -393,6 +396,23 @@ while true; do
 
 	esac
 done
+}
+rename_user(){
+echo "###########"
+echo "1.rename user"
+	echo "0.back to user_menu"
+	read -p "choose: " rename_user
+	case $rename_user in
+		0)
+			user_menu;;
+		1)
+			awk -F: '$3 >= 1000 {print $1}' /etc/passwd
+			read -p "type user to rename" old_name
+			read -p "type the new user name" new_name
+			sudo usermod -l $new_name $old_name;
+                *)
+                        echo "Invalid choice"
+                        sleep 0.3;;
 }
 main_menu(){
 while true; do
